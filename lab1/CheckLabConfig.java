@@ -5,7 +5,7 @@ public class CheckLabConfig {
 		String repoVariableName = "REPO_DIR";
 		String repoDir = System.getenv(repoVariableName);
 		checkVariableNotNull(repoDir, repoVariableName);
-		System.out.println("Validating your " + repoVariableName + 
+		System.out.println("Validating your " + repoVariableName +
 			               " environment variable, which is currently set to: " +
 			               repoDir);
 		checkIsValidRepo(repoDir, repoVariableName, isWindows, false);
@@ -14,7 +14,7 @@ public class CheckLabConfig {
 		String snapsRepoDir = System.getenv(snapsVariableName);
 
 		checkVariableNotNull(snapsRepoDir, snapsVariableName);
-		System.out.println("Validating your " + snapsVariableName + 
+		System.out.println("Validating your " + snapsVariableName +
 			               " environment variable, which is currently set to: " +
 			               snapsRepoDir);
 		checkIsValidRepo(snapsRepoDir, snapsVariableName, isWindows, true);
@@ -46,11 +46,11 @@ public class CheckLabConfig {
 		String expected;
 
 		if (!snapsCheck) {
-			pattern = "sp21-s[\\d]+";
-			expected = "sp21-s1234";
+			pattern = "sp21-[\\w]+";
+			expected = "sp21-marvin";
 		} else {
-			pattern = "snaps-sp21-s[\\d]+";
-			expected = "snaps-sp21-s1234";
+			pattern = "snaps-sp21-[\\w]+";
+			expected = "snaps-sp21-marvin";
 		}
 
 		if (!folderName.matches(pattern)) {
@@ -61,7 +61,7 @@ public class CheckLabConfig {
 
 		File file = new File(value);
 
-		boolean isDirectory = file.isDirectory(); 
+		boolean isDirectory = file.isDirectory();
 		if (!isDirectory) {
 			System.out.println("ERROR! " + value + " is not a valid folder.");
 			System.out.println("Double check that this variable was set correctly.");
